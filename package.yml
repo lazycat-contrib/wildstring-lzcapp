@@ -1,0 +1,24 @@
+package: community.lazycat.app.wildstring
+version: 0.8.5
+name: WildString
+description: "AI-native self-hosted music and podcast space: natural-language song search, AI mood playlists, word-by-word lyrics, multi-library isolation and podcast hosting"
+min_os_version: 1.6.0
+author: qingmuhy744
+homepage: https://github.com/qingmuhy744/wildstring
+license: GPL-3.0
+locales:
+  zh:
+    name: "野弦"
+    description: "AI 原生的自托管无损音乐与播客空间：自然语言找歌、AI 情绪歌单、逐字歌词、多曲库隔离与播客托管"
+  zh_CN:
+    name: "野弦"
+    description: "AI 原生的自托管无损音乐与播客空间：自然语言找歌、AI 情绪歌单、逐字歌词、多曲库隔离与播客托管"
+  en:
+    name: "WildString"
+    description: "AI-native self-hosted music and podcast space: natural-language song search, AI mood playlists, word-by-word lyrics and podcast hosting"
+permissions:
+  required:
+    - net.internet
+    - document.private
+    - document.read
+    - media.read

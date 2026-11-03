@@ -1,0 +1,38 @@
+application:
+  subdomain: wildstring
+  # 多实例：每个用户点击图标启动独立容器，数据天然隔离
+  multi_instance: true
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://wildstring:8000/
+
+services:
+  wildstring:
+    # upstream: ghcr.io/qingmuhy744/wildstring:0.8.5
+    image: registry.lazycat.cloud/czyt/qingmuhy744/wildstring:0.8.5
+    environment:
+      - WILDSTRING_ENVIRONMENT=production
+      # 只读导入源：用户文稿目录（多实例下是当前用户的）
+      - WILDSTRING_MUSIC_DIR=/lzcapp/documents
+      - WILDSTRING_WEB_DIR=/app/web
+      # 首次启动的管理员密码（仅当没有管理员时生效）
+      - WILDSTRING_ADMIN_PASSWORD={{.U.admin_password}}
+      # 懒猫内网是 HTTPS，设置 secure cookie
+      - WILDSTRING_COOKIE_SECURE=true
+    # 镜像内 /data 与 /podcasts 已属于 uid/gid 10001；把懒猫的持久化目录挂到
+    # /data，run_as 让系统按同一身份映射 /lzcapp 下持久目录的 owner，
+    # 容器可以正常读写挂载点。
+    binds:
+      - /lzcapp/var/data:/data
+      - /lzcapp/var/podcasts:/podcasts
+    # （run_as 需要 lzcos v1.6.0+，较旧的 lzc-cli lint 会误报为未知字段）
+    run_as: "10001:10001"
+
+ext_config:
+  # 挂载系统媒体目录（/lzcapp/media/RemoteFS），用于导入本地音乐
+  enable_media_access: true
+  enable_document_access: true
+  permissions:
+    - PERM_MEDIA_MOUNT_SHARED
