@@ -6,12 +6,19 @@ params:
     description: "Password for the built-in admin account (only used when no password is set yet). The account name is always 'admin'."
     default_value: "$random(len=16)"
 
+  - id: library_dir
+    type: string
+    name: "Music Library Directory"
+    description: "Path to external music library folder"
+    default_value: "Music"
+    
 locales:
   zh:
     admin_password:
       name: "管理员密码"
       description: "内置管理员账号（用户名固定为 admin）的密码。仅在尚未设置密码时生效，已有密码不会被覆盖。"
-  en:
-    admin_password:
-      name: "Admin Password"
-      description: "Password for the built-in admin account (the account name is always 'admin'). Only used when no password is set yet; an existing password is never overwritten."
+      
+    library_dir:
+      name: "音乐库目录"
+      description: "外部音乐库文件夹路径"  
+
