@@ -8,9 +8,10 @@
 ## 模式
 
 - **多实例**：每个用户点击应用图标启动独立容器，数据天然隔离（`multi_instance: true`）。
-- **镜像**：直接使用上游 GHCR 镜像 `ghcr.io/qingmuhy744/wildstring`，由 Action 转存到
-  `registry.lazycat.cloud`；版本跟随上游镜像 tag。
-- **双商店发布**：官方商店 + 喵喵（私有）商店。
+- **镜像模式**：直接使用上游 GHCR 镜像 `ghcr.io/qingmuhy744/wildstring`，由 Action 转存到
+  `registry.lazycat.cloud`；版本跟随上游镜像 tag（`update.version_source.type: image`）。
+- **只发喵喵（私有）商店**：官方商店未启用。官方商店要求 0.8.5 这类版本经过人工审核，
+  pending review 会挡住后续发布流程，因此这个打包不提交官方商店。
 
 ## 数据与目录
 
@@ -40,7 +41,7 @@ owner，再把 `/lzcapp/var/data`、`/lzcapp/var/podcasts` 挂到容器内的 `/
 
 | Secret | 说明 |
 | --- | --- |
-| `LZC_API_TOKEN` | 懒猫开发者平台 PAT（官方商店发布需要） |
+| `LZC_API_TOKEN` | 懒猫开发者平台 PAT，用于把镜像复制到 `registry.lazycat.cloud` |
 | `APPSTORE_URL` / `APPSTORE_TOKEN` | 喵喵商店 API 地址与发布令牌 |
 | `APP_ID` | 喵喵商店应用 ID |
 | `PRIVATE_STORE_GROUP_CODES` | 私有分组码 |

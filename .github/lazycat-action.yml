@@ -32,39 +32,8 @@ images:
 
 stores:
   official:
-    enabled: true
-    create_if_missing: true
-    skip_if_version_exists: true
-    changelog_locales: [zh, en]
-    application:
-      language: zh
-      name: 野弦
-      brief: "AI 原生的自托管私人音乐空间：自然语言找歌、AI 情绪歌单、逐字歌词与播客托管"
-      description: |
-        野弦 WildString 是一款 AI 原生的自托管音乐播放器与播客空间。
-
-        从自己的音乐收藏出发，用自然语言描述想听什么，它会先在曲库里找；
-        也可以让 AI 按情绪生成歌单，整理成自己的收歌线索。
-
-        · 逐字歌词与滚动歌词，播放时可看歌词滚动
-        · 多曲库隔离：导入源只读，托管副本在自己的持久目录里
-        · 播客托管：Apple Podcasts / iTunes 目录检索，收听与本地曲库同一处
-        · 无损分轨、响度归一与曲库指纹分析
-        · 音乐助手：整理结果由你掌控，可审核后应用
-
-        音乐与播客都在你自己的设备上，不上传任何音频。
-      keywords: 音乐, 播客, AI, 无损, 自托管, 播放器, 歌单, 歌词
-      source: https://github.com/qingmuhy744/wildstring
-      source_author: qingmuhy744
-      support_pc: true
-      support_mobile: true
-      screenshot_pc_files:
-        - .github/screenshots/pc-1-discover.png
-        - .github/screenshots/pc-2-library.png
-      screenshot_mobile_files:
-        - .github/screenshots/mobile-1-library.png
-        - .github/screenshots/mobile-2-player.png
-        - .github/screenshots/mobile-3-fullscreen.png
+    # 只发喵喵（私有）商店：官方商店的镜像审核与 pending review 会挡住发布流程
+    enabled: false
   private:
     enabled: true
     skip_if_version_exists: true
