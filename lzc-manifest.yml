@@ -16,7 +16,7 @@ services:
     environment:
       - WILDSTRING_ENVIRONMENT=production
       # 只读导入源：用户文稿目录（多实例下是当前用户的）
-      - WILDSTRING_MUSIC_DIR=/lzcapp/documents
+      - WILDSTRING_MUSIC_DIR=/lzcapp/run/mnt/home/{{ .U.library_dir }}
       - WILDSTRING_WEB_DIR=/app/web
       # 首次启动的管理员密码（仅当没有管理员时生效）
       - WILDSTRING_ADMIN_PASSWORD={{.U.admin_password}}
@@ -29,7 +29,7 @@ services:
       - /lzcapp/var/data:/data
       - /lzcapp/var/podcasts:/podcasts
     # （run_as 需要 lzcos v1.6.0+，较旧的 lzc-cli lint 会误报为未知字段）
-    run_as: "10001:10001"
+    user: root
 ext_config:
   # 挂载系统媒体目录（/lzcapp/media/RemoteFS），用于导入本地音乐
   enable_media_access: true
