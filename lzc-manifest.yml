@@ -7,12 +7,12 @@ application:
   upstreams:
     - location: /
       backend: http://wildstring:8000/
-
 services:
   wildstring:
     # 懒猫镜像源里的地址由 Action 在首次转存后写入（tag 是源镜像 digest 的前缀）。
     # 这里不要手写 upstream 注释：那会被当成"已经转存过"的基线，复制会被跳过。
-    image: registry.lazycat.cloud/czyt/qingmuhy744/wildstring:0.8.5
+    # upstream: ghcr.io/qingmuhy744/wildstring:0.8.5
+    image: registry.lazycat.cloud/czyt/qingmuhy744/wildstring:58deb7342e520fd9
     environment:
       - WILDSTRING_ENVIRONMENT=production
       # 只读导入源：用户文稿目录（多实例下是当前用户的）
@@ -30,7 +30,6 @@ services:
       - /lzcapp/var/podcasts:/podcasts
     # （run_as 需要 lzcos v1.6.0+，较旧的 lzc-cli lint 会误报为未知字段）
     run_as: "10001:10001"
-
 ext_config:
   # 挂载系统媒体目录（/lzcapp/media/RemoteFS），用于导入本地音乐
   enable_media_access: true
