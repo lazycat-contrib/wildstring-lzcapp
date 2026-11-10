@@ -1,5 +1,5 @@
 package: community.lazycat.app.wildstring
-version: 0.8.8
+version: 0.8.9
 name: WildString
 description: "AI-native self-hosted music and podcast space: natural-language song search, AI mood playlists, word-by-word lyrics, multi-library isolation and podcast hosting"
 min_os_version: 1.6.0
