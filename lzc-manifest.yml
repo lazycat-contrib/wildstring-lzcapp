@@ -11,8 +11,8 @@ services:
   wildstring:
     # 懒猫镜像源里的地址由 Action 在首次转存后写入（tag 是源镜像 digest 的前缀）。
     # 这里不要手写 upstream 注释：那会被当成"已经转存过"的基线，复制会被跳过。
-    # upstream: ghcr.io/qingmuhy744/wildstring:0.8.14
-    image: registry.lazycat.cloud/czyt/qingmuhy744/wildstring:eb6a1438029cf33b
+    # upstream: ghcr.io/qingmuhy744/wildstring:0.8.16
+    image: registry.lazycat.cloud/czyt/qingmuhy744/wildstring:dcd695f2eef06a3d
     environment:
       - WILDSTRING_ENVIRONMENT=production
       # 只读导入源：用户文稿目录（多实例下是当前用户的）
